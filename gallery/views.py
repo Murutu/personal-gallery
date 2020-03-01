@@ -32,13 +32,13 @@ def convert_dates(dates):
 
 def gallery_today(request):
     date = dt.date.today()
-    return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
+    return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery,})
 
    
 
 def past_days_gallery(request,past_date):
     
-    def past_days_news(request,past_date):
+    def past_days_gallery(request,past_date):
     
         try:
             # Converts data from the string Url
@@ -47,17 +47,9 @@ def past_days_gallery(request,past_date):
         except ValueError:
             # Raise 404 error when ValueError is thrown
             raise Http404()
-    
-    
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
+            assert False
 
-        day = convert_dates(date)
-        html = f'''
-            <html>
-                <body>
-                    <h1>News for {day} {date.day}-{date.month}-{date.year}</h1>
-                </body>
-            </html>
-                '''
-        return HttpResponse(html)
+    if date == dt.date.today():
+        return redirect(gallery_of_day)
+
+    return render(request, 'all-gallery/past-gallery.html', {"date": date})
