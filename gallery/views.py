@@ -8,7 +8,7 @@ def welcome(request):
     return render(request, 'welcome.html')
     return HttpResponse('Welcome to the Personal Gallery')
 
-def news_of_day(request):
+def gallery_of_day(request):
     date = dt.date.today()
     html = f'''
         <html>
