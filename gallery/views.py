@@ -8,16 +8,16 @@ def welcome(request):
     return render(request, 'welcome.html')
     return HttpResponse('Welcome to the Personal Gallery')
 
-def gallery_of_day(request):
-    date = dt.date.today()
-    html = f'''
-        <html>
-            <body>
-                <h1> {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+# def gallery_of_day(request):
+#     date = dt.date.today()
+#     html = f'''
+#         <html>
+#             <body>
+#                 <h1> {date.day}-{date.month}-{date.year}</h1>
+#             </body>
+#         </html>
+#             '''
+#     return HttpResponse(html)
 
 def convert_dates(dates):
     
@@ -32,7 +32,7 @@ def convert_dates(dates):
 
 def gallery_today(request):
     date = dt.date.today()
-    return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
+    return render(request, 'all-gallery/today-gallery.html', {"date": date,})
 
    
 
