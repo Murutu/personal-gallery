@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http  import HttpResponse,Http404
 import datetime as dt
 from django.shortcuts import render,redirect
-
+from .models import Image
 
 # Create your views here.
 def welcome(request):
@@ -54,3 +54,10 @@ def past_days_gallery(request,past_date):
         return redirect(gallery_of_day)
 
     return render(request, 'all-gallery/past-gallery.html', {"date": date})
+
+def image(request,image_id):
+    try:
+        image=Image.objects.get(id= image_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,'index.html',{'image':image})
