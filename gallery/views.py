@@ -30,19 +30,11 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
-def gallery_of_day(request):
+def gallery_today(request):
     date = dt.date.today()
+    return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
 
-    # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1>News for {day} {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+   
 
 def past_days_gallery(request,past_date):
     
