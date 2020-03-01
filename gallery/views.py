@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http  import HttpResponse,Http404
 import datetime as dt
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 def welcome(request):
@@ -32,7 +32,7 @@ def convert_dates(dates):
 
 def gallery_today(request):
     date = dt.date.today()
-    return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery,})
+    return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
 
    
 
