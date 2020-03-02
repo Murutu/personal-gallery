@@ -69,3 +69,16 @@ def category(request,category_id):
     except DoesNotExist:
         raise Http404()
     return render (request,'category.html',{'category:category'})
+
+def search_results(request):
+    
+    if 'photos' in request.GET and request.GET["photos"]:
+        category = request.GET.get("photos")
+        searched_category = Image.search_by_category(category)
+        message = f"{category}"
+
+        return render(request, 'all-gallery/search.html',{"message":message})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-news/search.html',{"message":message})
