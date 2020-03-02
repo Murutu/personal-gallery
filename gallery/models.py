@@ -1,4 +1,5 @@
 from django.db import models
+import pyperclip
 
 # Create your models here.
 class Image(models.Model):
@@ -23,6 +24,13 @@ class Image(models.Model):
         images = cls.objects.all()
         return images
     
+    @classmethod 
+    def copy_image(cls,image_url):
+        pyperclip.copy(image_url)
+    
+    def delete_image(self):
+        self.delete()
+        
     @classmethod
     def search_by_category(cls,category):
         images = cls.objects.filter(image_category__icontains=category)
@@ -35,6 +43,8 @@ class tags(models.Model):
 
     def __str__(self):
         return self.title
+    
+
     
     
 
