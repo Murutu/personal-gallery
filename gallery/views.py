@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http  import HttpResponse,Http404
 import datetime as dt
 from django.shortcuts import render,redirect
-from .models import Image
+from .models import Image,Category,Location
 
 # Create your views here.
 def welcome(request):
+    images = Image.all_images()
     return render(request, 'welcome.html')
     return HttpResponse('Welcome to the Personal Gallery')
 
@@ -61,3 +62,10 @@ def image(request,image_id):
     except DoesNotExist:
         raise Http404()
     return render(request,'index.html',{'image':image})
+
+def category(request,category_id):
+    try:
+        category= Category.objects.get(id = category_id)
+    except DoesNotExist:
+        raise Http404()
+    return render (request,'category.html',{'category:category'})
