@@ -11,7 +11,12 @@ In the app after you add your image in  the admin page, you should search for it
 Click on the image to view location and description.
 
 ### Technologies used
-* Django 3
+```sh
+$ Django3
+$ Heroku
+$ postgresql
+$ python 3.6
+```
 
 ### Contacts
 email: murutupeter@gmail.com
