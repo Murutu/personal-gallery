@@ -44,7 +44,9 @@ class tags(models.Model):
     def __str__(self):
         return self.title
     
-
+class Category(models.Model):
+    image_title = models.CharField(max_length=30)
+    description= models.TextField(max_length=100)
     
     
 
