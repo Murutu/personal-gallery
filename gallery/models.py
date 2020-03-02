@@ -6,6 +6,9 @@ class Image(models.Model):
     image_title = models.CharField(max_length=60)
     image_description = models.TextField(max_length=500)
     image_category = models.CharField(max_length=30,blank=True)
+    image_location = models.CharField(max_length=50,blank=True)
+    
+    
     
     def __str__(self):
         return self.image_title
@@ -36,6 +39,10 @@ class Image(models.Model):
         images = cls.objects.filter(image_category__icontains=category)
         return images
     
+    @classmethod
+    def filter_by_location(cls,location):
+        image_location = IMage.objects.filter(location__title=location).all()
+    
         
     
 class tags(models.Model):
@@ -47,6 +54,12 @@ class tags(models.Model):
 class Category(models.Model):
     image_title = models.CharField(max_length=30)
     description= models.TextField(max_length=100)
+    
+class Location(models.Model):
+    place = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return f'place: {self.place}'
     
     
 
