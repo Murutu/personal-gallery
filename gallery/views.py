@@ -34,7 +34,7 @@ def convert_dates(dates):
 
 def gallery_today(request):
     date = dt.date.today()
-    return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
+    return render(request, 'all-gallery/today-gallery.html', {"date": date})
 
    
 

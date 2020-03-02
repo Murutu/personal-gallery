@@ -7,6 +7,7 @@ class Image(models.Model):
     image_description = models.TextField(max_length=500)
     image_category = models.CharField(max_length=30,blank=True)
     image_location = models.CharField(max_length=50,blank=True)
+    image_url = models.ImageField(upload_to='images/')
     
     
     
